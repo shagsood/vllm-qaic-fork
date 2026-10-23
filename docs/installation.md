@@ -131,11 +131,11 @@ python -m pip install \
 # 2. vllm runtime dependencies (torch excluded — already installed above)
 pip install -r requirements/vllm_dependency_aot.txt
 
-# 2 (cont.) vllm from public GitHub tag — built with VLLM_TARGET_DEVICE=empty
+# 2 (cont.) Cohere2-MoE vLLM core — built with VLLM_TARGET_DEVICE=empty
 #   (empty target: no C++ compilation, no torch in wheel METADATA)
 VLLM_TARGET_DEVICE=empty pip install \
     --no-build-isolation --no-deps \
-    "vllm @ git+https://github.com/vllm-project/vllm.git@v0.15.0"
+    "vllm @ git+https://github.com/shagsood/vllm-fork.git@ee08aabc25446e118492e5c271a4aaf7eeaaf8b1"
 
 # 3. vllm-qaic from source
 TORCH_QAIC_INSTALLED=0 pip install --no-build-isolation ./vllm-qaic
@@ -170,11 +170,11 @@ pip install -r requirements/vllm_dependency_pyt.txt
 # Option A (default): install vllm-cpu from PyPI — no C++ compilation needed
 pip install --no-deps "vllm-cpu==0.15.0"
 
-# Option B: build from public GitHub tag with VLLM_TARGET_DEVICE=empty
+# Option B: build Cohere2-MoE vLLM core with VLLM_TARGET_DEVICE=empty
 #   (no C++ compilation, no torch in wheel METADATA — uv-safe)
 # VLLM_TARGET_DEVICE=empty pip install \
 #     --no-build-isolation --no-deps \
-#     "vllm @ git+https://github.com/vllm-project/vllm.git@v0.15.0"
+#     "vllm @ git+https://github.com/shagsood/vllm-fork.git@ee08aabc25446e118492e5c271a4aaf7eeaaf8b1"
 
 # 3. vllm-qaic from source
 pip install --no-build-isolation ./vllm-qaic

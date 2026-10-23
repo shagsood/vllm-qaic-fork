@@ -136,7 +136,7 @@ if [ "${MODE}" = "aot" ]; then
     ${PIP} install -r "${SCRIPT_DIR}/../requirements/vllm_dependency_aot.txt"
     VLLM_TARGET_DEVICE="${VLLM_TARGET_DEVICE_AOT}" ${PIP} install \
         --no-build-isolation --no-deps \
-        "vllm @ git+https://github.com/vllm-project/vllm.git@v${VLLM_VERSION}"
+        "vllm @ git+${VLLM_REPO_URL}@${VLLM_REF}"
 
     echo "=== Step 3: vllm-qaic-aot ==="
     if [ "${INSTALL_SOURCE}" = "source" ]; then
@@ -187,7 +187,7 @@ elif [ "${MODE}" = "pyt" ]; then
         # and produces no torch Requires-Dist in METADATA so uv will not upgrade torch.
         VLLM_TARGET_DEVICE=empty ${PIP} install \
             --no-build-isolation --no-deps \
-            "vllm @ git+https://github.com/vllm-project/vllm.git@v${VLLM_VERSION}"
+            "vllm @ git+${VLLM_REPO_URL}@${VLLM_REF}"
     fi
 
     echo "=== Step 3: vllm-qaic-pyt ==="

@@ -9,6 +9,9 @@
 # === Common ===
 VLLM_VERSION="0.15.0"
 VLLM_QAIC_VERSION="1.22"
+# Cohere2-MoE is carried by this vLLM core fork; the QAIC backend remains this repo.
+VLLM_REPO_URL="${VLLM_REPO_URL:-https://github.com/shagsood/vllm-fork.git}"
+VLLM_REF="${VLLM_REF:-ee08aabc25446e118492e5c271a4aaf7eeaaf8b1}"
 
 # === AOT stack ===
 TORCH_VERSION_AOT="2.7.0+cpu"   # CPU-only torch for AOT; qefficient pins to exactly 2.7.0+cpu
