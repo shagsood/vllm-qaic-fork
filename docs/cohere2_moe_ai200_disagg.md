@@ -11,6 +11,25 @@ Use another disjoint 8+4 QID split if these are occupied. Do not reuse the
 AI100 QPCs: compile fresh QPCs on the AI200 host with
 `aic_hw_version=ai200`.
 
+## One-command AI200 run
+
+The script clones the QEff fork and this Qualcomm QAIC fork into `WORKDIR`,
+installs the pinned Cohere2-MoE vLLM core (never `vllm-project/vllm`), exports,
+compiles, launches disaggregation, and writes artifacts below
+`$WORKDIR/artifacts`.
+
+```bash
+git clone --branch feature/cohere2-moe-qaic --single-branch \
+  https://github.com/shagsood/vllm-qaic-fork.git
+cd vllm-qaic
+WORKDIR=/data/cohere2-moe-ai200 \
+  bash examples/run_cohere2_moe_ai200_disagg.sh run
+```
+
+Load the AI200 SDK environment first. The default topology is prefill QIDs
+`0-7` and decode QIDs `8-11`; change `PREFILL_QIDS` and `DECODE_QIDS` only to
+another disjoint 8+4 AI200 allocation.
+
 ## 1. Verify the AI200 host
 
 ```bash
