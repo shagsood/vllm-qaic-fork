@@ -16,7 +16,7 @@ requests >= 2.26.0
 tqdm
 blake3
 py-cpuinfo
-transformers == 5.5.4 # required for QEfficient with tag 'r1.21.0'
+transformers == 5.9.0 # required for Cohere2-MoE
 tokenizers >= 0.21.1  # Required for fast incremental detokenization.
 protobuf==6.31.0 # Required by LlamaTokenizer, gRPC.
 fastapi[standard] >= 0.115.0, < 0.137 # Required by FastAPI's form models in the OpenAI API server's audio transcriptions endpoint; <0.137 due to prometheus-fastapi-instrumentator#370.

@@ -30,6 +30,21 @@ Load the AI200 SDK environment first. The default topology is prefill QIDs
 `0-7` and decode QIDs `8-11`; change `PREFILL_QIDS` and `DECODE_QIDS` only to
 another disjoint 8+4 AI200 allocation.
 
+## Serve existing QPCs only
+
+When QEff has already compiled the AI200 QPCs, install the AOT vLLM-QAIC stack
+and start `qaic_disagg` without recompiling:
+
+```bash
+bash examples/serve_cohere2_moe_ai200_qpcs.sh \
+  --prefill-qpc-path /absolute/path/to/prefill/qpc \
+  --decode-qpc-path /absolute/path/to/decode/qpc
+```
+
+The first invocation installs the source checkout and its pinned Cohere2-MoE
+vLLM core. Subsequent starts use `INSTALL_VLLM_QAIC=0`. The API server listens
+on port 18000; pass different QIDs or ports to the Python launcher when needed.
+
 ## 1. Verify the AI200 host
 
 ```bash
